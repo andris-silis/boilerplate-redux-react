@@ -2,16 +2,21 @@ import { Map } from "immutable";
 import React, { Component } from "react";
 import { createStore, compose } from "redux";
 import { Provider } from "react-redux";
+import { combineReducers } from "redux-immutable";
 
-import centralReducer from "./central-reducer";
 import Layout from "./ui/layout/Layout";
+
+import testModule from "./modules/module";
 
 
 const createStoreWithMiddleware = compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 )(createStore);
 
-const store = createStoreWithMiddleware(centralReducer, Map());
+const combinedReducers = combineReducers({
+  testValue: testModule,
+});
+const store = createStoreWithMiddleware(combinedReducers, Map());
 
 if (process.env.NODE_ENV === "development") {
   window.store = store;
