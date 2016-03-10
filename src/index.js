@@ -1,3 +1,6 @@
+import "babel-polyfill";
+import "whatwg-fetch";
+import "eventsource-polyfill";
 import React from 'react';
 import { render } from 'react-dom';
 import { App } from './App';
