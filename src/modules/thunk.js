@@ -1,3 +1,8 @@
+
+const SET = "thunk/SET";
+
+const initialState = 0;
+
 export function thunkAction() {
   return async(dispatch, getState) => {
     // fetching
@@ -7,8 +12,26 @@ export function thunkAction() {
     // await response.json();
 
     // fetched
-    // dispatch();
+    // dispatch(setValue(10));
     // save
-    // dispatch();
   }
 }
+
+export function setValue(value) {
+  return {
+    type: SET,
+    payload: {
+      value,
+    }
+  };
+}
+
+export default function thunk(state = initialState, action) {
+  switch (action.type) {
+    case SET:
+      return action.payload.value;
+  }
+  return state;
+}
+
+
