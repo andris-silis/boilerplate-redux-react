@@ -36,12 +36,23 @@ export default {
       {
         test: /\.jsx?$/,
         loaders: ["babel"],
-        include: path.join(__dirname, "src")
+        include: path.join(__dirname, "src"),
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!autoprefixer-loader?{browsers:["last 3 version", "> 1%"]}',
+        loaders: [
+          "style-loader",
+          "css-loader",
+        ],
       },
-    ]
+      {
+        test: /\.scss$/,
+        loaders: [
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+        ],
+      },
+    ],
   }
 };

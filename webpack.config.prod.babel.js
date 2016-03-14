@@ -12,6 +12,10 @@ export default {
     filename: "bundle.js",
     publicPath: "/static/"
   },
+  resolve: {
+    extensions: ["", ".js", ".jsx"],
+    alias: {},
+  },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
@@ -26,10 +30,29 @@ export default {
     })
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ["babel"],
-      include: path.join(__dirname, "src")
-    }]
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        loaders: ["babel"],
+        include: path.join(__dirname, "src")
+      },
+      {
+        test: /\.css$/,
+        loaders: [
+          "style-loader",
+          "css-loader",
+          'autoprefixer-loader?{browsers:["last 3 version", "> 1%"]}',
+        ],
+      },
+      {
+        test: /\.scss$/,
+        loaders: [
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+          'autoprefixer-loader?{browsers:["last 3 version", "> 1%"]}',
+        ],
+      },
+    ]
   }
 };

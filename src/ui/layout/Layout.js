@@ -3,7 +3,7 @@ import * as React from "react";
 import Container from "../container/Container"
 
 
-require("./layout.css");
+require("./layout.scss");
 
 export default class Layout extends React.Component {
   render() {
