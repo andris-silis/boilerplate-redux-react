@@ -4,5 +4,8 @@ import "eventsource-polyfill";
 import React from 'react';
 import { render } from 'react-dom';
 import { App } from './App';
+import TodoApp from './ui/todos/TodoApp';
 
-render(<App />, document.getElementById('root'));
+
+render(<TodoApp />, document.getElementById('root'));
+// render(<App />, document.getElementById('root'));
