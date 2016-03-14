@@ -27,12 +27,20 @@ export default class TodoApp extends React.Component {
     });
   };
 
+  onTextChange = (todo, text) => {
+    todo.text = text;
+    this.setState({
+      todos: this.state.todos,
+    });
+  };
+
   render() {
     return (
       <div className="app">
         <TodoList
           todos={this.state.todos}
           onCompletedChange={this.onCompletedChange}
+          onTextChange={this.onTextChange}
         />
       </div>
     );
