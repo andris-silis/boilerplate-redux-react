@@ -8,6 +8,9 @@
     "stage-0"
   ],
   "env": {
+    "test": {
+
+    },
     "development": {
       "presets": ["react-hmre"]
     },
