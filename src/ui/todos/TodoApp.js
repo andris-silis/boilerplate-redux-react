@@ -1,6 +1,8 @@
 import * as React from "react";
+import { max } from "lodash";
 
 import TodoList from "./TodoList";
+import TodoAdd from "./TodoAdd";
 
 
 export default class TodoApp extends React.Component {
@@ -34,6 +36,17 @@ export default class TodoApp extends React.Component {
     });
   };
 
+  onAdd = (text) => {
+    this.state.todos.push({
+      id: max(this.state.todos.map((todo) => todo.id)) + 1,
+      text: text,
+    });
+
+    this.setState({
+      todos: this.state.todos,
+    });
+  };
+
   render() {
     return (
       <div className="app">
@@ -41,6 +54,9 @@ export default class TodoApp extends React.Component {
           todos={this.state.todos}
           onCompletedChange={this.onCompletedChange}
           onTextChange={this.onTextChange}
+        />
+        <TodoAdd
+          onSave={this.onAdd}
         />
       </div>
     );
